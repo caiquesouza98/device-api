@@ -114,4 +114,32 @@ public class DeviceControllerTest {
                         )
                 ));
     }
+
+    @Test
+    void shouldReturnBadRequestForInvalidDeviceType() throws Exception {
+        mockMvc.perform(post("/devices")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                    {
+                        "name": "Unknown Device",
+                        "type": "INVALID_TYPE"
+                    }
+                """))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.type").exists());
+    }
+
+    @Test
+    void shouldReturnBadRequestForEmptyName() throws Exception {
+        mockMvc.perform(post("/devices")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                    {
+                        "name": "",
+                        "type": "MODEM"
+                    }
+                """))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.name").value("Name is required"));
+    }
 }
