@@ -1,0 +1,38 @@
+= Device API Docs
+:toc: left
+:toclevels: 2
+:sectnums:
+:source-highlighter: highlightjs
+
+== POST /devices
+
+Register a new device.
+
+include::{snippets}/device-create/http-request.adoc[]
+include::{snippets}/device-create/http-response.adoc[]
+include::{snippets}/device-create/request-fields.adoc[]
+include::{snippets}/device-create/response-fields.adoc[]
+
+== GET /devices/{id}
+
+Get a device by its ID.
+
+include::{snippets}/device-get-by-id/http-request.adoc[]
+include::{snippets}/device-get-by-id/http-response.adoc[]
+include::{snippets}/device-get-by-id/response-fields.adoc[]
+
+
+== GET /devices
+
+List all registered devices.
+
+=== Example Request
+include::{snippets}/devices-list/http-request.adoc[]
+
+=== Example Response
+include::{snippets}/devices-list/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/devices-list/response-fields.adoc[]
+
+
